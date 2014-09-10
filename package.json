@@ -1,0 +1,19 @@
+{
+  "name": "timeismoney",
+  "author": "Patrick McCarthy <p.t.mccarthy@gmail.com>",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "latest",
+    "jade": "latest",
+    "stylus": "latest",
+    "winston": "latest",
+  	"serve-favicon": "latest",
+  	"morgan": "latest",
+  	"body-parser": "latest",
+  	"method-override": "latest"
+  },
+  "engines": {
+    "node": "0.10.31",
+    "npm": "1.4.x"
+  }
+}

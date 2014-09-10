@@ -1,0 +1,14 @@
+div#meeting-timer {
+  height: 3em;
+  font-size: 3em;
+  color: green;
+}
+
+div#attendee-list {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+div#meeting-control {
+  padding-top: 2em;
+}

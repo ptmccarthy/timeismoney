@@ -1,0 +1,20 @@
+block extraHeader
+  script(src='/lib/jquery.timer.js')
+  script(src='/lib/moment.min.js')
+  script(src='/scripts/tim.js')
+  link(rel='stylesheet', href='/css/tim.css')
+
+block content
+  
+  div#meeting-timer
+
+  h2 Attendees
+  div#attendee-list
+
+  form(class='form-inline', action='')
+    input(type='text', class='form-control', name="Name", placeholder="Name")
+    input(type='number', class='form-control', name="Rate", placeholder="Hourly Rate")
+    button(type='button', class='btn btn-default', id='add-to-meeting') Add To Meeting
+
+  div#meeting-control
+    button(type='submit', class='btn btn-primary', id='start-stop') Start Meeting
