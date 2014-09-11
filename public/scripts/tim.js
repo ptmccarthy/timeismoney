@@ -37,8 +37,8 @@ var initTimer = function(timerDisplay, timerToggle) {
 
 var initAttendeeList = function(attendeeList, addAttendeeBtn, addAttendeeForm) {
   addAttendeeForm.bootstrapValidator({
-    container: '#validate-messages[type="reset"]',
-    //submitButtons: addAttendeeBtn,
+    container: '#validate-messages',
+    submitButtons: addAttendeeBtn,
     fields: {
       name: {
         validators: {
@@ -49,11 +49,11 @@ var initAttendeeList = function(attendeeList, addAttendeeBtn, addAttendeeForm) {
       },
       rate: {
         validators: {
-          numeric: {
-            message: 'Rate must be a number.'
-          },
           notEmpty: {
             message: 'Attendee must have a rate.'
+          },
+          numeric: {
+            message: 'Rate must be a number.'
           }
         }
       }
@@ -72,6 +72,7 @@ var recordAttendeeForm = function(attendeeList, addAttendeeBtn, addAttendeeForm)
   
   addAttendeeForm[0].reset();
   addAttendeeForm.bootstrapValidator('resetForm');
+  addAttendeeForm.bootstrapValidator('disableSubmitButtons', true);
   $('#att-name-input').focus();
 }
 
