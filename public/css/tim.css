@@ -1,6 +1,11 @@
-div#meeting-timer {
+div#meeting-cost {
   font-size: 4em;
   color: #43C43C;
+}
+
+div#elapsed-time {
+  font-size: 1em;
+  color: gray;
 }
 
 div#attendee-list {
