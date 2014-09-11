@@ -73,7 +73,6 @@ var initAttendeeList = function(attendeeList, addAttendeeBtn, addAttendeeForm) {
 var recordAttendeeForm = function(attendeeList, addAttendeeBtn, addAttendeeForm) {
   var attendee = generateAttendeeListItem(addAttendeeForm.serializeArray()); 
   attendees.push(attendee);
-  console.log(attendees);
   attendeeList.append('<li>' + attendee.name + ' @ ' + attendee.rate + '</li>');
   hourlyCost += parseFloat(attendee.rate);
   
