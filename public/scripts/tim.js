@@ -5,12 +5,14 @@ var hourlyCost = 0;
 
 $(document).ready(function() {
   var timerDisplay = $('#meeting-timer');
+  var addAttendeeForm = $('#add-attendee-form');
   var attendeeList = $('#attendee-list');
   var addAttendeeBtn = $('#add-to-meeting');
   var toggle = $('#start-stop');
 
-  initAttendeeList(attendeeList, addAttendeeBtn);
+  initAttendeeList(attendeeList, addAttendeeBtn, addAttendeeForm);
   initTimer(timerDisplay, toggle);
+  $('#att-name-input').focus();
 });
 
 var initTimer = function(timerDisplay, timerToggle) {
@@ -33,12 +35,44 @@ var initTimer = function(timerDisplay, timerToggle) {
   });
 }
 
-var initAttendeeList = function(attendeeList, addAttendeeBtn) {
-  addAttendeeBtn.click(function() {
-    var attendee = $(this).parent().serializeArray(); 
-    attendeeList.append('<li>' + attendee[0].value + ' / ' + parseFloat(attendee[1].value).toFixed(2) + '</li>');
-    hourlyCost += parseFloat(attendee[1].value);
+var initAttendeeList = function(attendeeList, addAttendeeBtn, addAttendeeForm) {
+  addAttendeeForm.bootstrapValidator({
+    container: '#validate-messages[type="reset"]',
+    //submitButtons: addAttendeeBtn,
+    fields: {
+      name: {
+        validators: {
+          notEmpty: {
+            message: 'Attendee must have a name.'
+          }
+        }
+      },
+      rate: {
+        validators: {
+          numeric: {
+            message: 'Rate must be a number.'
+          },
+          notEmpty: {
+            message: 'Attendee must have a rate.'
+          }
+        }
+      }
+    }
+  })
+  .on('success.form.bv', function(e) {
+    e.preventDefault();
+    recordAttendeeForm(attendeeList, addAttendeeBtn, addAttendeeForm);
   });
+}
+
+var recordAttendeeForm = function(attendeeList, addAttendeeBtn, addAttendeeForm) {
+  var attendee = addAttendeeForm.serializeArray(); 
+  attendeeList.append('<li>' + attendee[0].value + ' @ ' + parseFloat(attendee[1].value).toFixed(2) + '</li>');
+  hourlyCost += parseFloat(attendee[1].value);
+  
+  addAttendeeForm[0].reset();
+  addAttendeeForm.bootstrapValidator('resetForm');
+  $('#att-name-input').focus();
 }
 
 var incrementTimer = function(timerDisplay) {

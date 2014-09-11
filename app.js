@@ -1,8 +1,3 @@
-
-/**
- * Module dependencies.
- */
-
 var logger = require('./logger');
 var config = require('./config/config_server');
 
@@ -28,7 +23,7 @@ app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 if (app.get('env') == 'development') {
-	app.locals.pretty = true;
+  app.locals.pretty = true;
 }
 
 app.get('/', routes.index);

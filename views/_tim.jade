@@ -1,20 +1,25 @@
 block extraHeader
   script(src='/lib/jquery.timer.js')
   script(src='/lib/moment.min.js')
+  script(src='/lib/bootstrapValidator.min.js')
   script(src='/scripts/tim.js')
   link(rel='stylesheet', href='/css/tim.css')
 
 block content
   
+  h1 So Far, Your Meeting Has Cost:
   div#meeting-timer
 
   h2 Attendees
   div#attendee-list
 
-  form(class='form-inline', action='')
-    input(type='text', class='form-control', name="Name", placeholder="Name")
-    input(type='number', class='form-control', name="Rate", placeholder="Hourly Rate")
-    button(type='button', class='btn btn-default', id='add-to-meeting') Add To Meeting
+  form(class='form-inline', id='add-attendee-form', action='')
+    div.form-group
+      input(type='text', class='form-control', id="att-name-input", name="name", placeholder="Name")
+    div.form-group
+      input(type='number', class='form-control', id="att-rate-input", name="rate", placeholder="Hourly Rate")
+    button(type='submit', class='btn btn-default', id='add-to-meeting' disabled) Add To Meeting
+  div#validate-messages
 
   div#meeting-control
     button(type='submit', class='btn btn-primary', id='start-stop') Start Meeting

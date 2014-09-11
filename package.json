@@ -7,10 +7,10 @@
     "jade": "latest",
     "stylus": "latest",
     "winston": "latest",
-  	"serve-favicon": "latest",
-  	"morgan": "latest",
-  	"body-parser": "latest",
-  	"method-override": "latest"
+    "serve-favicon": "latest",
+    "morgan": "latest",
+    "body-parser": "latest",
+    "method-override": "latest"
   },
   "engines": {
     "node": "0.10.31",

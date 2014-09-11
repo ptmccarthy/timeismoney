@@ -1,7 +1,6 @@
 div#meeting-timer {
-  height: 3em;
-  font-size: 3em;
-  color: green;
+  font-size: 4em;
+  color: #43C43C;
 }
 
 div#attendee-list {
