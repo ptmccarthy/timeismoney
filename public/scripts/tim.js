@@ -14,6 +14,8 @@ $(document).ready(function() {
   var addAttendeeBtn = $('#add-to-meeting');
   var toggle = $('#start-stop');
 
+  //$('#')
+
   initAttendeeList(attendeeList, addAttendeeBtn, addAttendeeForm);
   initTimer(timerDisplay, elapsedDisplay, toggle);
   $('#att-name-input').focus();

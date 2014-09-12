@@ -8,7 +8,8 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , favicon = require('serve-favicon')
   , morgan = require('morgan')
-  , methodOverride = require('method-override');
+  , methodOverride = require('method-override')
+  , markdown = require('markdown');
 
 var app = express();
 

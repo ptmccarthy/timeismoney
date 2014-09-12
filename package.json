@@ -10,7 +10,8 @@
     "serve-favicon": "latest",
     "morgan": "latest",
     "body-parser": "latest",
-    "method-override": "latest"
+    "method-override": "latest",
+    "markdown": "latest"
   },
   "engines": {
     "node": "0.10.31",
