@@ -1,7 +1,7 @@
 var config = {};
 
 // general server settings
-config.port = '8000';
+config.port = '80';
 config.databaseName = 'tim';
 config.mongoURL = 'localhost:27017/' + config.databaseName;
 
