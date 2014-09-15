@@ -6,7 +6,7 @@ If you've ever been stuck in a meeting with too many people that drags on for fa
 Time Is Money is an easy-to-use app that keeps a running tally of exactly how expensive those dragging meetings are, in dollar terms.
 
 ##See It Live
-[http://timeismoney.duckdns.org:8000](http://timeismoney.duckdns.org:8000)
+[http://timeismoney.duckdns.org](http://timeismoney.duckdns.org)
 
 ##Author
 [Patrick McCarthy](http://ptmccarthy.github.io)
