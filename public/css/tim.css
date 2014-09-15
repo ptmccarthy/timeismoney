@@ -1,5 +1,22 @@
+strong {
+  color: #43C43C;
+}
+
 .navbar-brand, .navbar-brand:hover {
   color: #43C43C !important;
+}
+
+li.attendee {
+  height: 1.4em;
+}
+
+img.remove-att {
+  height: 0.9em;
+  padding-bottom: 0.1em;
+}
+
+img.remove-att:hover {
+  cursor: pointer;
 }
 
 div#meeting-cost {

@@ -1,6 +1,7 @@
 'use strict';
 
 var attendees = [];
+var next_att_id = 0;
 var totalCost = 0;
 var hourlyCost = 0;
 var elapsedTime = 0;
@@ -13,8 +14,6 @@ $(document).ready(function() {
   var attendeeList = $('#attendee-list');
   var addAttendeeBtn = $('#add-to-meeting');
   var toggle = $('#start-stop');
-
-  //$('#')
 
   initAttendeeList(attendeeList, addAttendeeBtn, addAttendeeForm);
   initTimer(timerDisplay, elapsedDisplay, toggle);
@@ -75,10 +74,24 @@ var initAttendeeList = function(attendeeList, addAttendeeBtn, addAttendeeForm) {
 var recordAttendeeForm = function(attendeeList, addAttendeeBtn, addAttendeeForm) {
   var attendee = generateAttendeeListItem(addAttendeeForm.serializeArray()); 
   attendees.push(attendee);
-  attendeeList.append('<li>' + attendee.name + ' @ ' + attendee.rate + '</li>');
+
   hourlyCost += parseFloat(attendee.rate);
+
+  repopulateAttendeeList(attendeeList);
   
   resetForm(addAttendeeForm, $('#att-name-input'));
+}
+
+var repopulateAttendeeList = function(attendeeList) {
+  attendeeList.find('.attendee').remove();
+
+  attendees.forEach(function(att) {
+    attendeeList.append('<li class=attendee>' + att.name + ' @ ' + att.rate + '  <img src=/images/redx.png class=remove-att id = ' + att.id + '></li>');
+  });
+
+  attendeeList.find('.remove-att').click(function() {
+    removeAttendee(this.id, attendeeList);
+  });
 }
 
 var incrementTimer = function(timerDisplay, elapsedDisplay) {
@@ -90,6 +103,8 @@ var incrementTimer = function(timerDisplay, elapsedDisplay) {
 
 var generateAttendeeListItem = function(serializedAttendeeForm) {
   var attendee = {};
+  attendee.id = next_att_id;
+  next_att_id += 1;
   attendee.name = serializedAttendeeForm[0].value.toString();
   attendee.rate = parseFloat(serializedAttendeeForm[1].value).toFixed(2);
 
@@ -101,6 +116,17 @@ var resetForm = function(form, newFocus) {
   form.bootstrapValidator('resetForm');
   form.bootstrapValidator('disableSubmitButtons', true);
   newFocus.focus();
+}
+
+var removeAttendee = function(attendee_id, attendeeList) {
+  for (var i = 0; i < attendees.length; i++) {
+    if (attendees[i].id == attendee_id) {
+      hourlyCost -= attendees[i].rate
+      attendees.splice(i, 1);    
+    }
+  }
+
+  repopulateAttendeeList(attendeeList);
 }
 
 Number.prototype.toHHMMSS = function () {
