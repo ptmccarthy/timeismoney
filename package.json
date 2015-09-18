@@ -16,5 +16,8 @@
   "engines": {
     "node": "latest",
     "npm": "latest"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
