@@ -30,5 +30,5 @@ if (app.get('env') == 'development') {
 app.get('/', routes.index);
 
 http.createServer(app).listen(port, function(){
-  logger.info('Express server listening on port ' + app.get('port'));
+  logger.info('Express server listening on port ' + port);
 });
