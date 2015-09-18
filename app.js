@@ -12,8 +12,8 @@ var express = require('express')
   , markdown = require('markdown');
 
 var app = express();
+var port = process.env.PORT || config.port;
 
-app.set('port', process.env.PORT || config.port);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(favicon(__dirname + '/public/images/favicon.png'));
@@ -29,6 +29,6 @@ if (app.get('env') == 'development') {
 
 app.get('/', routes.index);
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(port, function(){
   logger.info('Express server listening on port ' + app.get('port'));
 });
